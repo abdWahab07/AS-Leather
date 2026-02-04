@@ -3,13 +3,19 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 import CartSidebar from "./CartSidebar";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const navItems = ["HOME", "PRODUCTS", "ABOUT US", "CONTACT"];
+  const navItems = [
+    { name: "HOME", href: "/" },
+    { name: "PRODUCTS", href: "/products" },
+    { name: "ABOUT US", href: "/about" },
+    { name: "CONTACT", href: "/contact" }
+  ];
 
   return (
     <>
@@ -33,15 +39,18 @@ export default function Navigation() {
             {/* Desktop Navigation - Center */}
             <div className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => (
-                <motion.a
-                  key={item}
-                  href="#"
+                <motion.div
+                  key={item.name}
                   whileHover={{ y: -2 }}
-                  className="text-gray-700 hover:text-gray-900 transition-colors font-bold text-sm tracking-wide"
-                  style={{ fontFamily: 'var(--font-bodoni-moda)' }}
                 >
-                  {item}
-                </motion.a>
+                  <Link
+                    href={item.href}
+                    className="text-gray-700 hover:text-gray-900 transition-colors font-bold text-sm tracking-wide"
+                    style={{ fontFamily: 'var(--font-bodoni-moda)' }}
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
               ))}
             </div>
 
@@ -97,16 +106,19 @@ export default function Navigation() {
         >
           <div className="px-4 py-4 space-y-3">
             {navItems.map((item) => (
-              <motion.a
-                key={item}
-                href="#"
+              <motion.div
+                key={item.name}
                 whileHover={{ x: 5 }}
-                className="block text-gray-700 hover:text-gray-900 transition-colors font-bold text-sm tracking-wide py-2"
-                style={{ fontFamily: 'var(--font-bodoni-moda)' }}
-                onClick={() => setIsMenuOpen(false)}
               >
-                {item}
-              </motion.a>
+                <Link
+                  href={item.href}
+                  className="block text-gray-700 hover:text-gray-900 transition-colors font-bold text-sm tracking-wide py-2"
+                  style={{ fontFamily: 'var(--font-bodoni-moda)' }}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
             ))}
           </div>
         </motion.div>
