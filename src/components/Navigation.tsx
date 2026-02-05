@@ -5,10 +5,12 @@ import { useState } from "react";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import CartSidebar from "./CartSidebar";
+import { useCart } from "@/contexts/CartContext";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const { getCartCount } = useCart();
 
   const navItems = [
     { name: "HOME", href: "/" },
@@ -61,11 +63,12 @@ export default function Navigation() {
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsCartOpen(true)}
                 className="text-gray-700 hover:text-[#5c3b23] transition-colors relative p-2 z-10"
+                data-cart-icon
               >
                 <ShoppingBagIcon className="w-6 h-6" aria-hidden="true" />
                 {/* Cart Badge */}
                 <span className="absolute -top-1 -right-1 bg-[#5c3b23] text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">
-                  2
+                  {getCartCount()}
                 </span>
               </motion.button>
 
