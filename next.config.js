@@ -2,7 +2,7 @@
 const nextConfig = {
   // Remove static export for proper client-side functionality
   // output: 'export',
-  trailingSlash: true,
+  trailingSlash: false,
   images: {
     unoptimized: true
   },
@@ -12,6 +12,8 @@ const nextConfig = {
   assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',
   // Handle base path if needed
   basePath: '',
+  // Add proper routing configuration
+  skipTrailingSlashRedirect: true,
   // Remove deprecated experimental appDir
   // experimental: {
   //   appDir: true

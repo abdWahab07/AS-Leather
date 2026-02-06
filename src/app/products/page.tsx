@@ -225,7 +225,6 @@ const ProductsPage: React.FC = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.03, y: -5 }}
-                transition={{ duration: 0.3 }}
               >
                 <ProductCard
                   {...product}

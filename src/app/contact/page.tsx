@@ -298,11 +298,11 @@ export default function ContactPage() {
                     key={index}
                     initial={{ x: 30, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
+                    exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
                     viewport={{ once: true }}
                     className="flex items-start gap-4"
                     whileHover={{ x: 5 }}
-                    transition={{ duration: 0.2 }}
                   >
                     <motion.div 
                       className="w-12 h-12 rounded-full bg-stone-800/10 flex items-center justify-center flex-shrink-0"
@@ -463,7 +463,6 @@ export default function ContactPage() {
                   boxShadow: "0 10px 30px rgba(92, 59, 35, 0.1)",
                   y: -5
                 }}
-                transition={{ duration: 0.3 }}
               >
                 <h3
                   className="text-lg font-semibold mb-2"

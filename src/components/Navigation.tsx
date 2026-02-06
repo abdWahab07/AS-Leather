@@ -19,6 +19,11 @@ export default function Navigation() {
     { name: "CONTACT", href: "/contact" }
   ];
 
+  const handleNavClick = (href: string) => {
+    console.log('Navigating to:', href);
+    setIsMenuOpen(false);
+  };
+
   return (
     <>
       <motion.nav
@@ -49,6 +54,7 @@ export default function Navigation() {
                     href={item.href}
                     className="text-gray-700 hover:text-gray-900 transition-colors font-bold text-sm tracking-wide"
                     style={{ fontFamily: 'var(--font-bodoni-moda)' }}
+                    prefetch={true}
                   >
                     {item.name}
                   </Link>
@@ -118,6 +124,7 @@ export default function Navigation() {
                   className="block text-gray-700 hover:text-gray-900 transition-colors font-bold text-sm tracking-wide py-2"
                   style={{ fontFamily: 'var(--font-bodoni-moda)' }}
                   onClick={() => setIsMenuOpen(false)}
+                  prefetch={true}
                 >
                   {item.name}
                 </Link>
